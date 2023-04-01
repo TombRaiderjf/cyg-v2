@@ -56,15 +56,16 @@ def main(id, neice=False, with_proxy=False, num_proxy=1, proxy_raw=""):
     print("预热结束--------------")
 
     goodUrl = "http://tl.cyg.changyou.com/goods/char_detail?serial_num=" + id
+    img_path = "http://tl.cyg.changyou.com/transaction/captcha-image?goods_serial_num=" + id + "&t=1670051375133"
     if neice:
         goodUrl = "http://tllm.cyg.changyou.com/goods/char_detail?serial_num=" + id
+        img_path = "http://tllm.cyg.changyou.com/transaction/captcha-image?goods_serial_num=" + id + "&t=1670051375133"
 
     buyUrl = "http://tl.cyg.changyou.com/transaction/buy"
     header = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36',
         'referer': goodUrl
-    }
-    img_path = "http://tl.cyg.changyou.com/transaction/captcha-image?goods_serial_num=" + id + "&t=1670051375133"
+    } 
 
     # ===============================================
     # 请到get_cookies.py line 55 配置谷歌浏览器cookie路径
@@ -81,7 +82,7 @@ def main(id, neice=False, with_proxy=False, num_proxy=1, proxy_raw=""):
         print("未查询到剩余时间！")
         exit(-1)
     # ===============================================
-    # 0.8 作为预估的公示区到交易区过渡时间的值，可自行修改
+    # 0.8秒作为预估的公示区到交易区过渡时间的值，可自行修改
     # ===============================================
     time.sleep(time_remained + 0.8)
     # set proxy pool
@@ -106,7 +107,7 @@ def main(id, neice=False, with_proxy=False, num_proxy=1, proxy_raw=""):
         captcha = identify(model_trt, image_np)
         print(captcha)
         if len(captcha) != 4:
-            print("验证码长度错误，跳过本次post")
+            print("验证码长度错误, 跳过本次post")
             continue
         data = {
             "goods_serial_num": id,
@@ -134,7 +135,10 @@ if __name__ == '__main__':
     # id: 角色商品号 use_neice: 是否内测（是为1，否为0） use_proxy: 是否使用代理（是为1，否为0）
     # num_proxy：代理可切换的数量 proxy：代理生成的网址
     # example:
-    # python3 login.py 202303251746489233 0 5 http://proxy.siyetian.com/apis_get.html?token=AesJWLORURw4EVJdXTqlEeNpWQx4kaJBjTR1STqFUeNpWR51ERRhXTqVleNpXS65ERJlnT6VFN.wM2IjM0MDM4YTM&limit=1&type=0&time=10&split=1&split_text=&area=0&repeat=0&isp=0
+    # 使用代理
+    # python3 login.py 202303251746489233 0 1 3 http://proxy.siyetian.com/apis_get.html?token=AesJWLORURw4EVJdXTqlEeNpWQx4kaJBjTR1STqFUeNpWR51ERRhXTqVleNpXS65ERJlnT6VFN.wM2IjM0MDM4YTM&limit=1&type=0&time=10&split=1&split_text=&area=0&repeat=0&isp=0
+    # 不使用代理（可能出现访问频繁被短暂封ip的情况）
+    # python3 login.py 202303251746489233 0 0
     # http://proxy.siyetian.com/apis_get.html?token=AesJWLORURw4EVJdXTqlEeNpWQx4kaJBjTR1STqFUeNpWR51ERRhXTqVleNpXS65ERJlnT6VFN.wM2IjM0MDM4YTM&limit=1&type=0&time=10&split=1&split_text=&area=0&repeat=0&isp=0
     if len(sys.argv) != 6 and len(sys.argv) != 4:
         print("参数错误！")

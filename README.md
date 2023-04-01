@@ -2,7 +2,7 @@
 
 1. **电脑必须是NVIDIA显卡**
 2. 安装谷歌浏览器
-3. 安装Python3+CUDA+torch+CudNN+TensorRT，请注意版本匹配问题renshi
+3. 安装Python3+CUDA+torch+CudNN+TensorRT，请注意版本匹配问题
 4. pip install 脚本.py文件所需的模块
 
 我的环境是win10, python 3.7.2, CUDA 11.3, torch 1.12.1+cu113, cudnn 8.6.0.163_cuda11, TensorRT 8.5.1.7

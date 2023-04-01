@@ -44,7 +44,7 @@
 
 下方左侧就是公众号二维码，右侧是小程序二维码，最末尾是我一个美女朋友的抖音，助力千粉梦想让十五看看咱家的号召力！
 
-![图片](gongzhong.jpg) ![图片](tools.jpg)
+![图片](http://tlbb.moyubao.net/key-resources/qrcode_gongzhonghao.jpg) ![图片](http://tlbb.moyubao.net/key-resources/qrcode_xiaochengxu.jpg)
 
-![图片](douyin.jpg)
+![图片](http://tlbb.moyubao.net/key-resources/douyin.jpg)
 
